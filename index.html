@@ -262,20 +262,22 @@
     }
 
     .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-      gap: 1px;
-      background: var(--gray-200);
-      border: 1px solid var(--gray-200);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
     .featured-card {
       background: var(--white);
       padding: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
+      border: 1px solid var(--gray-200);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.12s;
     }
+
+    .featured-card:hover { background: var(--gray-100); }
+    .featured-card.open { background: var(--white); }
 
     .featured-tag {
       font-size: 0.72rem;
@@ -284,20 +286,49 @@
       text-transform: uppercase;
       color: var(--gray-400);
       font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      margin-bottom: 0.4rem;
+    }
+
+    .featured-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
     }
 
     .featured-name {
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 700;
+      font-size: 1.05rem;
       color: var(--black);
       line-height: 1.4;
+      flex: 1;
     }
+
+    .featured-chevron {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      display: inline-block;
+      transition: transform 0.2s;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 0.3rem;
+    }
+
+    .featured-card.open .featured-chevron { transform: rotate(180deg); }
+
+    .featured-body {
+      display: none;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+
+    .featured-card.open .featured-body { display: flex; }
 
     .featured-desc {
       font-size: 0.83rem;
       color: var(--gray-600);
       line-height: 1.55;
-      flex: 1;
     }
 
     .featured-bullets {
@@ -568,7 +599,7 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="#home">Home</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#certifications">Recognition</a></li>
     <li><a href="#about">About</a></li>
   </ul>
 </nav>
@@ -647,14 +678,14 @@
   <p class="exp-label">Work Experience</p>
   <ul class="exp-list">
     <li class="exp-item">
-      <div class="exp-role">Systems Engineering Intern</div>
-      <div class="exp-org">ST Engineering</div>
-      <div class="exp-date">Jan 2026 – May 2026</div>
-    </li>
-    <li class="exp-item">
       <div class="exp-role">Process Engineering Intern</div>
       <div class="exp-org">Silicon Box</div>
       <div class="exp-date">Jun 2026 – Aug 2026</div>
+    </li>
+    <li class="exp-item">
+      <div class="exp-role">Systems Engineering Intern</div>
+      <div class="exp-org">ST Engineering</div>
+      <div class="exp-date">Jan 2026 – May 2026</div>
     </li>
   </ul>
 </section>
@@ -667,20 +698,30 @@
   <div class="subsection">
     <p class="subsection-title">Featured Projects</p>
     <div class="featured-grid">
-      <div class="featured-card">
+      <div class="featured-card" onclick="toggleFeatured(this)">
         <div class="featured-tag">SEMI Tech Zoomer Bootcamp · May 2025</div>
-        <div class="featured-name">Capacity Balancing and WIP Movement in Multi-Site Semiconductor Manufacturing</div>
-        <div class="featured-desc">Prototyped a Deep Q-Network solution to expand wafer production capacity from 600k to 1.1M wafers/year and optimise Automated Material Handling System efficiency. Presented to industry professionals from GlobalFoundries.</div>
-        <ul class="featured-bullets">
-          <li>Researched operational parameters and constraints (timelinks, minimum distances between transfer vehicles)</li>
-          <li>Integrated industrial system constraints into solution framework</li>
-          <li>Collaborated in a multidisciplinary international team of 5 under a 2-day competition timeframe</li>
-        </ul>
+        <div class="featured-card-header">
+          <div class="featured-name">Capacity Balancing and WIP Movement in Multi-Site Semiconductor Manufacturing</div>
+          <span class="featured-chevron">&#9660;</span>
+        </div>
+        <div class="featured-body">
+          <div class="featured-desc">Prototyped a Deep Q-Network solution to expand wafer production capacity from 600k to 1.1M wafers/year and optimise Automated Material Handling System efficiency. Presented to industry professionals from GlobalFoundries.</div>
+          <ul class="featured-bullets">
+            <li>Researched operational parameters and constraints (timelinks, minimum distances between transfer vehicles)</li>
+            <li>Integrated industrial system constraints into solution framework</li>
+            <li>Collaborated in a multidisciplinary international team of 5 under a 2-day competition timeframe</li>
+          </ul>
+        </div>
       </div>
-      <div class="featured-card">
+      <div class="featured-card" onclick="toggleFeatured(this)">
         <div class="featured-tag">NTU &amp; SenseID Tech · AY2025/26</div>
-        <div class="featured-name">FYP — Multi-Modal Data Analysis for Partial Discharge Diagnosis</div>
-        <div class="featured-desc">Final year project investigating multi-modal data analysis for partial discharge diagnosis, combining signal processing and deep learning for electrical insulation monitoring in high-voltage equipment.</div>
+        <div class="featured-card-header">
+          <div class="featured-name">FYP — Multi-Modal Data Analysis for Partial Discharge Diagnosis</div>
+          <span class="featured-chevron">&#9660;</span>
+        </div>
+        <div class="featured-body">
+          <div class="featured-desc">Final year project investigating multi-modal data analysis for partial discharge diagnosis, combining signal processing and deep learning for electrical insulation monitoring in high-voltage equipment.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -696,7 +737,7 @@
 <!-- ── CERTIFICATIONS ──────────────────────────────────────────── -->
 <section id="certifications">
   <p class="section-label">Achievements</p>
-  <h2>Certifications</h2>
+  <h2>Recognition</h2>
 
   <div class="cert-subsection">
     <p class="cert-subsection-title">Achievements</p>
@@ -844,6 +885,11 @@
 
   // Expandable cert cards
   function toggleCert(el) {
+    el.classList.toggle('open');
+  }
+
+  // Expandable featured project cards
+  function toggleFeatured(el) {
     el.classList.toggle('open');
   }
 
