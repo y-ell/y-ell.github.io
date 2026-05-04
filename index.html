@@ -124,7 +124,32 @@
       font-size: 1.05rem;
       color: var(--gray-600);
       margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
       margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--black);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--black);
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .link-btn:hover {
+      background: var(--black);
+      color: var(--white);
     }
 
     .home-bio {
@@ -150,31 +175,6 @@
       color: var(--gray-600);
       font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
       letter-spacing: 0.01em;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 1.1rem;
-      border: 1px solid var(--black);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--black);
-      transition: background 0.12s, color 0.12s;
-    }
-
-    .link-btn:hover {
-      background: var(--black);
-      color: var(--white);
     }
 
     .exp-label {
@@ -233,6 +233,80 @@
 
     /* ── PROJECTS ───────────────────────────────────────────────── */
     #projects { min-height: 100vh; }
+
+    .subsection { margin-bottom: 2.5rem; }
+
+    .subsection-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1rem;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      gap: 1px;
+      background: var(--gray-200);
+      border: 1px solid var(--gray-200);
+    }
+
+    .featured-card {
+      background: var(--white);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .featured-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    }
+
+    .featured-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--black);
+      line-height: 1.4;
+    }
+
+    .featured-desc {
+      font-size: 0.83rem;
+      color: var(--gray-600);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .featured-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .featured-bullets li {
+      font-size: 0.83rem;
+      color: var(--gray-600);
+      line-height: 1.5;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .featured-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--gray-400);
+    }
 
     .projects-grid {
       display: grid;
@@ -310,6 +384,25 @@
     /* ── CERTIFICATIONS ─────────────────────────────────────────── */
     #certifications { min-height: 100vh; }
 
+    .cert-subsection { margin-bottom: 2.5rem; }
+
+    .cert-subsection-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1rem;
+    }
+
+    .coming-soon {
+      font-size: 0.875rem;
+      color: var(--gray-400);
+      font-style: italic;
+      padding: 1.25rem 1.4rem;
+      border: 1px solid var(--gray-200);
+    }
+
     .cert-list {
       display: flex;
       flex-direction: column;
@@ -318,13 +411,21 @@
       border: 1px solid var(--gray-200);
     }
 
-    .cert-item {
+    .cert-expandable {
       background: var(--white);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cert-expandable:hover .cert-header { background: var(--gray-100); }
+
+    .cert-header {
       padding: 1.25rem 1.4rem;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       gap: 1rem;
+      transition: background 0.12s;
     }
 
     .cert-name {
@@ -339,13 +440,46 @@
       color: var(--gray-600);
     }
 
+    .cert-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
     .cert-date {
       font-size: 0.775rem;
       color: var(--gray-400);
       font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
       white-space: nowrap;
-      flex-shrink: 0;
-      padding-top: 0.1rem;
+    }
+
+    .cert-chevron {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      display: inline-block;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+
+    .cert-expandable.open .cert-chevron {
+      transform: rotate(180deg);
+    }
+
+    .cert-body {
+      display: none;
+      padding: 0 1.4rem 1.25rem;
+    }
+
+    .cert-expandable.open .cert-body {
+      display: block;
+    }
+
+    .cert-body iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid var(--gray-200);
+      display: block;
     }
 
     /* ── ABOUT ──────────────────────────────────────────────────── */
@@ -402,7 +536,8 @@
 
       #home { padding-top: 96px; }
 
-      .cert-item { flex-direction: column; gap: 0.35rem; }
+      .cert-header { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+      .cert-right { flex-direction: row; }
     }
   </style>
 </head>
@@ -427,19 +562,6 @@
   <p class="section-label">Portfolio</p>
   <h1>Lim Yi Le</h1>
   <p class="home-subtitle">EEE · NTU Singapore</p>
-  <p class="home-bio">
-    Electrical &amp; Electronic Engineering student with a focus on semiconductor automation and intelligent manufacturing. Building at the intersection of embedded systems, industrial protocols, and machine learning to make fabs smarter.
-  </p>
-
-  <div class="tags">
-    <span class="tag">Python</span>
-    <span class="tag">Embedded Systems</span>
-    <span class="tag">Modbus RTU</span>
-    <span class="tag">MQTT</span>
-    <span class="tag">Machine Learning</span>
-    <span class="tag">Semiconductor</span>
-    <span class="tag">Industrial IoT</span>
-  </div>
 
   <div class="social-links">
     <a class="link-btn" href="https://github.com/y-ell" target="_blank" rel="noopener noreferrer">
@@ -450,22 +572,43 @@
     </a>
   </div>
 
-  <p class="exp-label">Experience &amp; Research</p>
+  <p class="home-bio">[Your introduction here]</p>
+
+  <div class="tags">
+    <span class="tag">Python</span>
+    <span class="tag">SQL</span>
+    <span class="tag">MATLAB</span>
+    <span class="tag">NumPy</span>
+    <span class="tag">Pandas</span>
+    <span class="tag">Seaborn</span>
+    <span class="tag">Scikit-Learn</span>
+    <span class="tag">Arduino</span>
+    <span class="tag">ESP32</span>
+    <span class="tag">I2C</span>
+    <span class="tag">MQTT</span>
+    <span class="tag">Modbus RTU</span>
+    <span class="tag">BLE</span>
+    <span class="tag">GPIO</span>
+    <span class="tag">Git</span>
+    <span class="tag">Microsoft Office</span>
+    <span class="tag">Oscilloscope</span>
+    <span class="tag">Multimeter</span>
+    <span class="tag">Function Generator</span>
+    <span class="tag">English</span>
+    <span class="tag">Mandarin</span>
+  </div>
+
+  <p class="exp-label">Work Experience</p>
   <ul class="exp-list">
     <li class="exp-item">
       <div class="exp-role">Systems Engineering Intern</div>
       <div class="exp-org">ST Engineering</div>
-      <div class="exp-date">Jan 2025 – May 2025</div>
+      <div class="exp-date">Jan 2026 – May 2026</div>
     </li>
     <li class="exp-item">
       <div class="exp-role">Process Engineering Intern</div>
       <div class="exp-org">Silicon Box</div>
-      <div class="exp-date">Jun 2025 – Aug 2025</div>
-    </li>
-    <li class="exp-item">
-      <div class="exp-role">FYP · Multi-Modal Data Analysis for Partial Discharge Diagnosis</div>
-      <div class="exp-org">NTU Singapore</div>
-      <div class="exp-date">AY2025/26</div>
+      <div class="exp-date">Jun 2026 – Aug 2026</div>
     </li>
   </ul>
 </section>
@@ -474,8 +617,33 @@
 <section id="projects">
   <p class="section-label">Work</p>
   <h2>Projects</h2>
-  <div class="projects-grid" id="projectsGrid">
-    <div class="grid-msg">Fetching repositories…</div>
+
+  <div class="subsection">
+    <p class="subsection-title">Featured Projects</p>
+    <div class="featured-grid">
+      <div class="featured-card">
+        <div class="featured-tag">SEMI Tech Zoomer Bootcamp · May 2025</div>
+        <div class="featured-name">Capacity Balancing and WIP Movement in Multi-Site Semiconductor Manufacturing</div>
+        <div class="featured-desc">Prototyped a Deep Q-Network solution to expand wafer production capacity from 600k to 1.1M wafers/year and optimise Automated Material Handling System efficiency. Presented to industry professionals from GlobalFoundries.</div>
+        <ul class="featured-bullets">
+          <li>Researched operational parameters and constraints (timelinks, minimum distances between transfer vehicles)</li>
+          <li>Integrated industrial system constraints into solution framework</li>
+          <li>Collaborated in a multidisciplinary international team of 5 under a 2-day competition timeframe</li>
+        </ul>
+      </div>
+      <div class="featured-card">
+        <div class="featured-tag">NTU &amp; SenseID Tech · AY2025/26</div>
+        <div class="featured-name">FYP — Multi-Modal Data Analysis for Partial Discharge Diagnosis</div>
+        <div class="featured-desc">Final year project investigating multi-modal data analysis for partial discharge diagnosis, combining signal processing and deep learning for electrical insulation monitoring in high-voltage equipment.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <p class="subsection-title">GitHub Repositories</p>
+    <div class="projects-grid" id="projectsGrid">
+      <div class="grid-msg">Fetching repositories…</div>
+    </div>
   </div>
 </section>
 
@@ -483,41 +651,96 @@
 <section id="certifications">
   <p class="section-label">Achievements</p>
   <h2>Certifications</h2>
-  <div class="cert-list">
-    <div class="cert-item">
-      <div>
-        <div class="cert-name">OneArena 2021 — Second Runner-Up</div>
-        <div class="cert-issuer">NTU College of Engineering</div>
+
+  <div class="cert-subsection">
+    <p class="cert-subsection-title">Achievements</p>
+    <p class="coming-soon">Coming soon</p>
+  </div>
+
+  <div class="cert-subsection">
+    <p class="cert-subsection-title">Certifications</p>
+    <div class="cert-list">
+
+      <div class="cert-expandable" onclick="toggleCert(this)">
+        <div class="cert-header">
+          <div>
+            <div class="cert-name">OneArena 2021 — Second Runner-Up</div>
+            <div class="cert-issuer">NTU College of Engineering</div>
+          </div>
+          <div class="cert-right">
+            <span class="cert-date">Dec 2021</span>
+            <span class="cert-chevron">&#9660;</span>
+          </div>
+        </div>
+        <div class="cert-body">
+          <iframe src="/certs/onearena-2021.pdf" title="OneArena 2021 Certificate"></iframe>
+        </div>
       </div>
-      <div class="cert-date">Dec 2021</div>
-    </div>
-    <div class="cert-item">
-      <div>
-        <div class="cert-name">Beyond Binary Ideathon</div>
-        <div class="cert-issuer">NTU Women In Tech</div>
+
+      <div class="cert-expandable" onclick="toggleCert(this)">
+        <div class="cert-header">
+          <div>
+            <div class="cert-name">Beyond Binary Ideathon</div>
+            <div class="cert-issuer">NTU Women In Tech</div>
+          </div>
+          <div class="cert-right">
+            <span class="cert-date">Mar 2024</span>
+            <span class="cert-chevron">&#9660;</span>
+          </div>
+        </div>
+        <div class="cert-body">
+          <iframe src="/certs/beyond-binary-2024.pdf" title="Beyond Binary Ideathon Certificate"></iframe>
+        </div>
       </div>
-      <div class="cert-date">Mar 2024</div>
-    </div>
-    <div class="cert-item">
-      <div>
-        <div class="cert-name">SEMI Tech Zoomer Bootcamp</div>
-        <div class="cert-issuer">SEMICON SEA</div>
+
+      <div class="cert-expandable" onclick="toggleCert(this)">
+        <div class="cert-header">
+          <div>
+            <div class="cert-name">SEMI Tech Zoomer Bootcamp</div>
+            <div class="cert-issuer">SEMICON SEA</div>
+          </div>
+          <div class="cert-right">
+            <span class="cert-date">May 2025</span>
+            <span class="cert-chevron">&#9660;</span>
+          </div>
+        </div>
+        <div class="cert-body">
+          <iframe src="/certs/semi-bootcamp-2025.pdf" title="SEMI Tech Zoomer Bootcamp Certificate"></iframe>
+        </div>
       </div>
-      <div class="cert-date">May 2025</div>
-    </div>
-    <div class="cert-item">
-      <div>
-        <div class="cert-name">Excel Skills for Data Analysis &amp; Visualisation</div>
-        <div class="cert-issuer">Coursera</div>
+
+      <div class="cert-expandable" onclick="toggleCert(this)">
+        <div class="cert-header">
+          <div>
+            <div class="cert-name">Excel Skills for Data Analysis &amp; Visualisation</div>
+            <div class="cert-issuer">Coursera</div>
+          </div>
+          <div class="cert-right">
+            <span class="cert-date">2024</span>
+            <span class="cert-chevron">&#9660;</span>
+          </div>
+        </div>
+        <div class="cert-body">
+          <iframe src="/certs/coursera-excel.pdf" title="Excel Skills for Data Analysis Certificate"></iframe>
+        </div>
       </div>
-      <div class="cert-date">2026</div>
-    </div>
-    <div class="cert-item">
-      <div>
-        <div class="cert-name">FPGA Introductory Course</div>
-        <div class="cert-issuer">Coursera</div>
+
+      <div class="cert-expandable" onclick="toggleCert(this)">
+        <div class="cert-header">
+          <div>
+            <div class="cert-name">FPGA Introductory Course</div>
+            <div class="cert-issuer">Coursera</div>
+          </div>
+          <div class="cert-right">
+            <span class="cert-date">2024</span>
+            <span class="cert-chevron">&#9660;</span>
+          </div>
+        </div>
+        <div class="cert-body">
+          <iframe src="/certs/coursera-fpga.pdf" title="FPGA Introductory Course Certificate"></iframe>
+        </div>
       </div>
-      <div class="cert-date">2026</div>
+
     </div>
   </div>
 </section>
@@ -572,6 +795,11 @@
   }, { rootMargin: '-40% 0px -55% 0px' });
 
   sections.forEach(s => io.observe(s));
+
+  // Expandable cert cards
+  function toggleCert(el) {
+    el.classList.toggle('open');
+  }
 
   // GitHub language colours (subset)
   const LANG_COLORS = {
