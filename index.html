@@ -160,11 +160,27 @@
       margin-bottom: 2rem;
     }
 
+    .skills {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .skill-group-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
-      margin-bottom: 2rem;
     }
 
     .tag {
@@ -574,28 +590,58 @@
 
   <p class="home-bio">[Your introduction here]</p>
 
-  <div class="tags">
-    <span class="tag">Python</span>
-    <span class="tag">SQL</span>
-    <span class="tag">MATLAB</span>
-    <span class="tag">NumPy</span>
-    <span class="tag">Pandas</span>
-    <span class="tag">Seaborn</span>
-    <span class="tag">Scikit-Learn</span>
-    <span class="tag">Arduino</span>
-    <span class="tag">ESP32</span>
-    <span class="tag">I2C</span>
-    <span class="tag">MQTT</span>
-    <span class="tag">Modbus RTU</span>
-    <span class="tag">BLE</span>
-    <span class="tag">GPIO</span>
-    <span class="tag">Git</span>
-    <span class="tag">Microsoft Office</span>
-    <span class="tag">Oscilloscope</span>
-    <span class="tag">Multimeter</span>
-    <span class="tag">Function Generator</span>
-    <span class="tag">English</span>
-    <span class="tag">Mandarin</span>
+  <div class="skills">
+    <div class="skill-group">
+      <span class="skill-group-label">Programming</span>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">MATLAB</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <span class="skill-group-label">AI/ML</span>
+      <div class="tags">
+        <span class="tag">NumPy</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">Scikit-Learn</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <span class="skill-group-label">Embedded &amp; IoT</span>
+      <div class="tags">
+        <span class="tag">Arduino</span>
+        <span class="tag">ESP32</span>
+        <span class="tag">I2C</span>
+        <span class="tag">MQTT</span>
+        <span class="tag">Modbus RTU</span>
+        <span class="tag">BLE</span>
+        <span class="tag">GPIO</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <span class="skill-group-label">Tools</span>
+      <div class="tags">
+        <span class="tag">Git</span>
+        <span class="tag">Microsoft Office</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <span class="skill-group-label">Hardware</span>
+      <div class="tags">
+        <span class="tag">Oscilloscope</span>
+        <span class="tag">Multimeter</span>
+        <span class="tag">Function Generator</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <span class="skill-group-label">Languages</span>
+      <div class="tags">
+        <span class="tag">English</span>
+        <span class="tag">Mandarin</span>
+      </div>
+    </div>
   </div>
 
   <p class="exp-label">Work Experience</p>
